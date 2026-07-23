@@ -26,17 +26,9 @@ public class Main {
         https://github.com/texttechnologylab/duui-uima/tree/main/duui-mm 
          to know how and what is available */ 
         Map<String, String> models = Map.of(
-//                "Qwen/Qwen2.5-VL-7B-Instruct", "http://127.0.0.1:9992"
-//                "Qwen/Qwen2.5-VL-32B-Instruct", "http://127.0.0.1:9992",
-//                "Qwen/Qwen2.5-VL-72B-Instruct", "http://127.0.0.1:9992"
-//                "Qwen/Qwen2.5-VL-3B-Instruct", "http://127.0.0.1:9992"
-//                "Qwen/Qwen2.5-VL-3B-Instruct", "http://127.0.0.1:9992"
-//                "Qwen/Qwen2.5-VL-3B-Instruct", "http://127.0.0.1:9992"
-//                "Qwen/Qwen2.5-VL-3B-Instruct", "http://127.0.0.1:9992",
-                "vllm/Qwen/Qwen3-Omni-30B-A3B-Instruct", "http://127.0.0.1:9999"
-
-
-
+            "Qwen/Qwen2.5-VL-3B-Instruct", "http://127.0.0.1:9992",
+            // "Qwen/Qwen2.5-VL-3B-Instruct", "http://127.0.0.1:9992"
+            // etc.
         );
         // define the paths for your data 
         String[] dataDirs = {
