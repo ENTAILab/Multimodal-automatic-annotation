@@ -6,6 +6,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import java.io.UnsupportedEncodingException;
 import java.util.*;
 
+/**
+ * @author Ali Abusaleh
+ */
 public class Tweet {
     private final String tweetId;
     private final String mediaMimeType;

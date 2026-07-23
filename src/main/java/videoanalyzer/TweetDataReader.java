@@ -13,6 +13,9 @@ import java.util.function.Consumer;
 
 import models.Tweet;
 
+/**
+ * @author Ali Abusaleh
+ */
 public class TweetDataReader {
     private final String dataDir;
 

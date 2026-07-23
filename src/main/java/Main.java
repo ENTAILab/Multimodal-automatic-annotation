@@ -14,25 +14,31 @@ import java.net.URISyntaxException;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * @author Ali Abusaleh
+ */
 public class Main {
 
     private static final List<MediaProcessingStatus> mediaProcessingResults = new ArrayList<>();
 
     public static void main(String[] args) throws Exception {
+        /* run your DUUI-MM component, please refer to 
+        https://github.com/texttechnologylab/duui-uima/tree/main/duui-mm 
+         to know how and what is available */ 
         Map<String, String> models = Map.of(
-//                "Qwen/Qwen2.5-VL-7B-Instruct", "http://anduin.hucompute.org:9992"
-//                "Qwen/Qwen2.5-VL-32B-Instruct", "http://anduin.hucompute.org:9992",
-//                "Qwen/Qwen2.5-VL-72B-Instruct", "http://anduin.hucompute.org:9992"
-//                "Qwen/Qwen2.5-VL-3B-Instruct", "http://anduin.hucompute.org:9992"
-//                "Qwen/Qwen2.5-VL-3B-Instruct", "http://gondor.hucompute.org:9992"
+//                "Qwen/Qwen2.5-VL-7B-Instruct", "http://127.0.0.1:9992"
+//                "Qwen/Qwen2.5-VL-32B-Instruct", "http://127.0.0.1:9992",
+//                "Qwen/Qwen2.5-VL-72B-Instruct", "http://127.0.0.1:9992"
 //                "Qwen/Qwen2.5-VL-3B-Instruct", "http://127.0.0.1:9992"
-//                "Qwen/Qwen2.5-VL-3B-Instruct", "http://anduin.hucompute.org:9992",
+//                "Qwen/Qwen2.5-VL-3B-Instruct", "http://127.0.0.1:9992"
+//                "Qwen/Qwen2.5-VL-3B-Instruct", "http://127.0.0.1:9992"
+//                "Qwen/Qwen2.5-VL-3B-Instruct", "http://127.0.0.1:9992",
                 "vllm/Qwen/Qwen3-Omni-30B-A3B-Instruct", "http://127.0.0.1:9999"
 
 
 
         );
-
+        // define the paths for your data 
         String[] dataDirs = {
                 "/storage/projects/bagci/data/X/Bundestag/Tweets_with_media/",
                 "/storage/projects/bagci/data/X/Queries_with_media_stats"
@@ -56,7 +62,6 @@ public class Main {
 
                processImage(reader, duuiUrl, model, dataset);
                processVideo(reader, duuiUrl, model, dataset);
-               processText(reader, duuiUrl, model, dataset);
                // counter of broken and existing, uncomment when needed
                 // CheckImage(reader);
                 // CheckVideo(reader);
@@ -348,14 +353,6 @@ public class Main {
                 }
                 processedTweetIds.add(tweet.tweetId); // Mark as processed
                 mediaProcessingResults.add(new MediaProcessingStatus(tweet.text, tweet.tweetId, "image", "success", ""));
-
-//                if (tweet.base64Image == null || tweet.base64Image.isEmpty()) {
-//                    failedImages.incrementAndGet();
-//                    brokenImageIds.add(tweet.tweetId); // Add to broken set
-//                    throw new Exception("Empty image");
-//                }
-//                Base64.getDecoder().decode(tweet.base64Image);
-//                processedImages.incrementAndGet();
             } catch (Exception e) {
                 mediaProcessingResults.add(new MediaProcessingStatus(tweet.text, tweet.tweetId, "image", "failed", ""));
                 failedImages.incrementAndGet();
@@ -386,15 +383,6 @@ public class Main {
                 }
                 processedTweetIds.add(tweet.tweetId); // Mark as processed
                 mediaProcessingResults.add(new MediaProcessingStatus(tweet.text, tweet.tweetId, "video", "success", ""));
-
-//                if (tweet.base64Video == null || tweet.base64Video.isEmpty()) {
-//                    failedVideos.incrementAndGet();
-//                    brokenVideoIds.add(tweet.tweetId); // Add to broken set
-//                    throw new Exception("Empty video");
-//                }
-//                // Attempt to decode base64
-//                Base64.getDecoder().decode(tweet.base64Video);
-//                processedVideos.incrementAndGet();
             } catch (Exception e) {
                 failedVideos.incrementAndGet();
                 mediaProcessingResults.add(new MediaProcessingStatus(tweet.text, tweet.tweetId, "video", "failed", ""));

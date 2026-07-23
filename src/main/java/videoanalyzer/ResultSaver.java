@@ -6,6 +6,9 @@ import java.util.stream.Collectors;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 
+/**
+ * @author Ali Abusaleh
+ */
 public class ResultSaver {
     private final File outputFile;
     private final ObjectMapper objectMapper;

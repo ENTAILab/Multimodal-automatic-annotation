@@ -25,6 +25,9 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.*;
 
+/**
+ * @author Ali Abusaleh
+ */
 public class DUUIRunner {
     static DUUIComposer composer;
     static JCas cas;
@@ -48,12 +51,6 @@ public class DUUIRunner {
                 .withParameter("mode", mode)
 //                .withScale(iWorkers)
                 .build().withTimeout(500));
-
-//        composer.add(new DUUIRemoteDriver.Component(url2)
-//                .withParameter("model_name", model)
-//                .withParameter("mode", "video")
-////                .withScale(iWorkers)
-//                .build().withTimeout(1000));
 
         cas = JCasFactory.createJCas();
     }

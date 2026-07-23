@@ -1,5 +1,8 @@
 package models;
 
+/**
+ * @author Ali Abusaleh
+ */
 public class MediaProcessingStatus {
     public String tweetId;
     public String mediaType; // "image" or "video"
